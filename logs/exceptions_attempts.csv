@@ -1,0 +1,16 @@
+step,timestamp,transaction,attempt,failure,action,result
+2,12:19:13.020,T001,1,None,initial attempt,success
+4,12:19:13.020,T002,1,Network,initial attempt,fail:Network
+6,12:19:13.020,T003,1,None,initial attempt,success
+8,12:19:13.020,T004,1,Timeout,initial attempt,fail:Timeout
+10,12:19:13.020,T005,1,None,initial attempt,success
+12,12:19:13.020,T006,1,Database,initial attempt,fail:Database
+14,12:19:13.021,T007,1,None,initial attempt,success
+16,12:19:13.021,T008,1,Network,initial attempt,fail:Network
+18,12:19:13.021,T009,1,None,initial attempt,success
+20,12:19:13.021,T010,1,Timeout,initial attempt,fail:Timeout
+22,12:19:13.021,T011,1,None,initial attempt,success
+24,12:19:13.021,T012,1,Database,initial attempt,fail:Database
+26,12:19:13.021,T013,1,None,initial attempt,success
+28,12:19:13.021,T014,1,None,initial attempt,success
+30,12:19:13.021,T015,1,Network,initial attempt,fail:Network

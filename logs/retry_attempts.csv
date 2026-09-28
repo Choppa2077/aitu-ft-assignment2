@@ -1,0 +1,27 @@
+step,timestamp,transaction,attempt,failure,action,result
+2,12:19:13.022,T001,1,None,initial attempt,success
+5,12:19:13.022,T002,1,Network,initial attempt,fail:Network
+7,12:19:13.072,T002,2,Network,retry 1,success
+10,12:19:13.072,T003,1,None,initial attempt,success
+13,12:19:13.073,T004,1,Timeout,initial attempt,fail:Timeout
+16,12:19:13.123,T004,2,Timeout,retry 1,fail:Timeout
+19,12:19:13.224,T004,3,Timeout,retry 2,success
+22,12:19:13.224,T005,1,None,initial attempt,success
+25,12:19:13.224,T006,1,Database,initial attempt,fail:Database
+28,12:19:13.275,T006,2,Database,retry 1,fail:Database
+31,12:19:13.376,T006,3,Database,retry 2,fail:Database
+34,12:19:13.377,T007,1,None,initial attempt,success
+37,12:19:13.377,T008,1,Network,initial attempt,fail:Network
+39,12:19:13.427,T008,2,Network,retry 1,success
+42,12:19:13.428,T009,1,None,initial attempt,success
+45,12:19:13.428,T010,1,Timeout,initial attempt,fail:Timeout
+48,12:19:13.479,T010,2,Timeout,retry 1,fail:Timeout
+51,12:19:13.580,T010,3,Timeout,retry 2,success
+54,12:19:13.580,T011,1,None,initial attempt,success
+57,12:19:13.581,T012,1,Database,initial attempt,fail:Database
+60,12:19:13.631,T012,2,Database,retry 1,fail:Database
+63,12:19:13.732,T012,3,Database,retry 2,fail:Database
+66,12:19:13.733,T013,1,None,initial attempt,success
+69,12:19:13.733,T014,1,None,initial attempt,success
+72,12:19:13.734,T015,1,Network,initial attempt,fail:Network
+74,12:19:13.785,T015,2,Network,retry 1,success

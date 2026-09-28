@@ -1,0 +1,9 @@
+test_processor.py::test_baseline_stops_at_first_failure PASSED           [ 12%]
+test_processor.py::test_exceptions_mode_continues_after_every_failure PASSED [ 25%]
+test_processor.py::test_retry_policy_matches_rules_table PASSED          [ 37%]
+test_processor.py::test_gateway_is_idempotent_no_double_charge PASSED    [ 50%]
+test_processor.py::test_checkpoints_every_5_successes_plus_final_flush PASSED [ 62%]
+test_processor.py::test_rollback_discards_pending_and_reverses_debit PASSED [ 75%]
+test_processor.py::test_rollback_redoes_journal_when_failure_is_mid_group PASSED [ 87%]
+test_processor.py::test_validation_error_is_never_retried PASSED         [100%]
+============================== 8 passed in 0.05s ===============================

@@ -1,0 +1,42 @@
+{
+  "mode": "baseline",
+  "metrics": {
+    "transactions_attempted": 2,
+    "successful_transactions": 1,
+    "failed_transactions": 1,
+    "not_attempted": 13,
+    "transactions_lost": 14,
+    "processed_amount_kzt": 12000,
+    "lost_amount_kzt": 425000,
+    "retries": 0,
+    "rollbacks": 0,
+    "gateway_debit_calls": 1,
+    "gateway_unique_debits": 1,
+    "gateway_reversals": 0,
+    "unreconciled_pending_kzt": 0,
+    "ledger_total_kzt": 12000,
+    "completion_rate": 0.0667
+  },
+  "status": {
+    "T001": "SUCCESS",
+    "T002": "FAILED",
+    "T003": "NOT_ATTEMPTED",
+    "T004": "NOT_ATTEMPTED",
+    "T005": "NOT_ATTEMPTED",
+    "T006": "NOT_ATTEMPTED",
+    "T007": "NOT_ATTEMPTED",
+    "T008": "NOT_ATTEMPTED",
+    "T009": "NOT_ATTEMPTED",
+    "T010": "NOT_ATTEMPTED",
+    "T011": "NOT_ATTEMPTED",
+    "T012": "NOT_ATTEMPTED",
+    "T013": "NOT_ATTEMPTED",
+    "T014": "NOT_ATTEMPTED",
+    "T015": "NOT_ATTEMPTED"
+  },
+  "exceptions": {
+    "T002": "NetworkError"
+  },
+  "recovery": {},
+  "checkpoints": []
+}

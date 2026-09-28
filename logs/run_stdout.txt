@@ -1,0 +1,149 @@
+
+### baseline
+  === mode=baseline start: 15 transactions, total 437000 KZT ===
+  T001 SUCCESS amount=12000
+  T002 FAILED [Network] NetworkError: T002: connection refused by payment gateway -> program stopped, remaining transactions never attempted
+  === mode=baseline end: {"transactions_attempted": 2, "successful_transactions": 1, "failed_transactions": 1, "not_attempted": 13, "transactions_lost": 14, "processed_amount_kzt": 12000, "lost_amount_kzt": 425000, "retries": 0, "rollbacks": 0, "gateway_debit_calls": 1, "gateway_unique_debits": 1, "gateway_reversals": 0, "unreconciled_pending_kzt": 0, "ledger_total_kzt": 12000, "completion_rate": 0.0667} ===
+
+### exceptions
+  === mode=exceptions start: 15 transactions, total 437000 KZT ===
+  T001 SUCCESS amount=12000
+  T002 FAILED [Network] NetworkError: T002: connection refused by payment gateway -> skipped, continuing
+  T003 SUCCESS amount=8000
+  T004 FAILED [Timeout] GatewayTimeoutError: T004: gateway response timed out after debit -> skipped, continuing
+  T005 SUCCESS amount=13000
+  T006 FAILED [Database] DatabaseError: T006: ledger write failed (database unavailable) -> skipped, continuing
+  T007 SUCCESS amount=9000
+  T008 FAILED [Network] NetworkError: T008: connection refused by payment gateway -> skipped, continuing
+  T009 SUCCESS amount=15000
+  T010 FAILED [Timeout] GatewayTimeoutError: T010: gateway response timed out after debit -> skipped, continuing
+  T011 SUCCESS amount=6000
+  T012 FAILED [Database] DatabaseError: T012: ledger write failed (database unavailable) -> skipped, continuing
+  T013 SUCCESS amount=11000
+  T014 SUCCESS amount=22000
+  T015 FAILED [Network] NetworkError: T015: connection refused by payment gateway -> skipped, continuing
+  === mode=exceptions end: {"transactions_attempted": 15, "successful_transactions": 8, "failed_transactions": 7, "not_attempted": 0, "transactions_lost": 7, "processed_amount_kzt": 96000, "lost_amount_kzt": 341000, "retries": 0, "rollbacks": 0, "gateway_debit_calls": 12, "gateway_unique_debits": 12, "gateway_reversals": 0, "unreconciled_pending_kzt": 245000, "ledger_total_kzt": 96000, "completion_rate": 0.5333} ===
+
+### retry
+  === mode=retry start: 15 transactions, total 437000 KZT ===
+  T001 attempt 1 (initial attempt): success
+  T001 SUCCESS amount=12000
+  T002 attempt 1 (initial attempt): Network - T002: connection refused by payment gateway; retrying in 0.05s
+  T002 attempt 2 (retry 1): success
+  T002 SUCCESS amount=25000
+  T003 attempt 1 (initial attempt): success
+  T003 SUCCESS amount=8000
+  T004 attempt 1 (initial attempt): Timeout - T004: gateway response timed out after debit; retrying in 0.05s
+  T004 attempt 2: gateway replayed stored receipt GW-T004-004 (idempotency key T004) - no double charge
+  T004 attempt 2 (retry 1): Timeout - T004: gateway response timed out after debit; retrying in 0.10s
+  T004 attempt 3: gateway replayed stored receipt GW-T004-004 (idempotency key T004) - no double charge
+  T004 attempt 3 (retry 2): success
+  T004 SUCCESS amount=45000
+  T005 attempt 1 (initial attempt): success
+  T005 SUCCESS amount=13000
+  T006 attempt 1 (initial attempt): Database - T006: ledger write failed (database unavailable); retrying in 0.05s
+  T006 attempt 2: gateway replayed stored receipt GW-T006-006 (idempotency key T006) - no double charge
+  T006 attempt 2 (retry 1): Database - T006: ledger write failed (database unavailable); retrying in 0.10s
+  T006 attempt 3: gateway replayed stored receipt GW-T006-006 (idempotency key T006) - no double charge
+  T006 attempt 3 (retry 2): Database - retries exhausted
+  T006 FAILED after 3 attempts [Database] - pending debit 70000 KZT left unreconciled
+  T007 attempt 1 (initial attempt): success
+  T007 SUCCESS amount=9000
+  T008 attempt 1 (initial attempt): Network - T008: connection refused by payment gateway; retrying in 0.05s
+  T008 attempt 2 (retry 1): success
+  T008 SUCCESS amount=31000
+  T009 attempt 1 (initial attempt): success
+  T009 SUCCESS amount=15000
+  T010 attempt 1 (initial attempt): Timeout - T010: gateway response timed out after debit; retrying in 0.05s
+  T010 attempt 2: gateway replayed stored receipt GW-T010-010 (idempotency key T010) - no double charge
+  T010 attempt 2 (retry 1): Timeout - T010: gateway response timed out after debit; retrying in 0.10s
+  T010 attempt 3: gateway replayed stored receipt GW-T010-010 (idempotency key T010) - no double charge
+  T010 attempt 3 (retry 2): success
+  T010 SUCCESS amount=50000
+  T011 attempt 1 (initial attempt): success
+  T011 SUCCESS amount=6000
+  T012 attempt 1 (initial attempt): Database - T012: ledger write failed (database unavailable); retrying in 0.05s
+  T012 attempt 2: gateway replayed stored receipt GW-T012-012 (idempotency key T012) - no double charge
+  T012 attempt 2 (retry 1): Database - T012: ledger write failed (database unavailable); retrying in 0.10s
+  T012 attempt 3: gateway replayed stored receipt GW-T012-012 (idempotency key T012) - no double charge
+  T012 attempt 3 (retry 2): Database - retries exhausted
+  T012 FAILED after 3 attempts [Database] - pending debit 80000 KZT left unreconciled
+  T013 attempt 1 (initial attempt): success
+  T013 SUCCESS amount=11000
+  T014 attempt 1 (initial attempt): success
+  T014 SUCCESS amount=22000
+  T015 attempt 1 (initial attempt): Network - T015: connection refused by payment gateway; retrying in 0.05s
+  T015 attempt 2 (retry 1): success
+  T015 SUCCESS amount=40000
+  === mode=retry end: {"transactions_attempted": 15, "successful_transactions": 13, "failed_transactions": 2, "not_attempted": 0, "transactions_lost": 2, "processed_amount_kzt": 287000, "lost_amount_kzt": 150000, "retries": 11, "rollbacks": 0, "gateway_debit_calls": 23, "gateway_unique_debits": 15, "gateway_reversals": 0, "unreconciled_pending_kzt": 150000, "ledger_total_kzt": 287000, "completion_rate": 0.8667} ===
+
+### checkpoint
+  === mode=checkpoint start: 15 transactions, total 437000 KZT ===
+  T001 attempt 1 (initial attempt): success
+  T001 SUCCESS amount=12000 (ledger 1 tx / 12000 KZT)
+  T002 attempt 1 (initial attempt): Network - T002: connection refused by payment gateway; retrying in 0.05s
+  T002 attempt 2 (retry 1): success
+  T002 SUCCESS amount=25000 (ledger 2 tx / 37000 KZT)
+  T003 attempt 1 (initial attempt): success
+  T003 SUCCESS amount=8000 (ledger 3 tx / 45000 KZT)
+  T004 attempt 1 (initial attempt): Timeout - T004: gateway response timed out after debit; retrying in 0.05s
+  T004 attempt 2: gateway replayed stored receipt GW-T004-004 (idempotency key T004) - no double charge
+  T004 attempt 2 (retry 1): Timeout - T004: gateway response timed out after debit; retrying in 0.10s
+  T004 attempt 3: gateway replayed stored receipt GW-T004-004 (idempotency key T004) - no double charge
+  T004 attempt 3 (retry 2): success
+  T004 SUCCESS amount=45000 (ledger 4 tx / 90000 KZT)
+  T005 attempt 1 (initial attempt): success
+  T005 SUCCESS amount=13000 (ledger 5 tx / 103000 KZT)
+  CHECKPOINT CP1: 5 successful tx, 103000 KZT, ledger=['T001', 'T002', 'T003', 'T004', 'T005'] -> logs/checkpoints/CP1.json
+  T006 attempt 1 (initial attempt): Database - T006: ledger write failed (database unavailable); retrying in 0.05s
+  T006 attempt 2: gateway replayed stored receipt GW-T006-006 (idempotency key T006) - no double charge
+  T006 attempt 2 (retry 1): Database - T006: ledger write failed (database unavailable); retrying in 0.10s
+  T006 attempt 3: gateway replayed stored receipt GW-T006-006 (idempotency key T006) - no double charge
+  T006 attempt 3 (retry 2): Database - retries exhausted
+  ROLLBACK T006: reversed gateway debit GW-T006-006 (70000 KZT) - compensating action
+  ROLLBACK T006 [Database]: restored CP1; discarded in-flight {'T006': 70000}; redo 0 journaled commit(s) []; state now 5 tx / 103000 KZT
+  T006 ROLLED_BACK amount=70000 - continuing with next
+  T007 attempt 1 (initial attempt): success
+  T007 SUCCESS amount=9000 (ledger 6 tx / 112000 KZT)
+  T008 attempt 1 (initial attempt): Network - T008: connection refused by payment gateway; retrying in 0.05s
+  T008 attempt 2 (retry 1): success
+  T008 SUCCESS amount=31000 (ledger 7 tx / 143000 KZT)
+  T009 attempt 1 (initial attempt): success
+  T009 SUCCESS amount=15000 (ledger 8 tx / 158000 KZT)
+  T010 attempt 1 (initial attempt): Timeout - T010: gateway response timed out after debit; retrying in 0.05s
+  T010 attempt 2: gateway replayed stored receipt GW-T010-009 (idempotency key T010) - no double charge
+  T010 attempt 2 (retry 1): Timeout - T010: gateway response timed out after debit; retrying in 0.10s
+  T010 attempt 3: gateway replayed stored receipt GW-T010-009 (idempotency key T010) - no double charge
+  T010 attempt 3 (retry 2): success
+  T010 SUCCESS amount=50000 (ledger 9 tx / 208000 KZT)
+  T011 attempt 1 (initial attempt): success
+  T011 SUCCESS amount=6000 (ledger 10 tx / 214000 KZT)
+  CHECKPOINT CP2: 10 successful tx, 214000 KZT, ledger=['T001', 'T002', 'T003', 'T004', 'T005', 'T007', 'T008', 'T009', 'T010', 'T011'] -> logs/checkpoints/CP2.json
+  T012 attempt 1 (initial attempt): Database - T012: ledger write failed (database unavailable); retrying in 0.05s
+  T012 attempt 2: gateway replayed stored receipt GW-T012-011 (idempotency key T012) - no double charge
+  T012 attempt 2 (retry 1): Database - T012: ledger write failed (database unavailable); retrying in 0.10s
+  T012 attempt 3: gateway replayed stored receipt GW-T012-011 (idempotency key T012) - no double charge
+  T012 attempt 3 (retry 2): Database - retries exhausted
+  ROLLBACK T012: reversed gateway debit GW-T012-011 (80000 KZT) - compensating action
+  ROLLBACK T012 [Database]: restored CP2; discarded in-flight {'T012': 80000}; redo 0 journaled commit(s) []; state now 10 tx / 214000 KZT
+  T012 ROLLED_BACK amount=80000 - continuing with next
+  T013 attempt 1 (initial attempt): success
+  T013 SUCCESS amount=11000 (ledger 11 tx / 225000 KZT)
+  T014 attempt 1 (initial attempt): success
+  T014 SUCCESS amount=22000 (ledger 12 tx / 247000 KZT)
+  T015 attempt 1 (initial attempt): Network - T015: connection refused by payment gateway; retrying in 0.05s
+  T015 attempt 2 (retry 1): success
+  T015 SUCCESS amount=40000 (ledger 13 tx / 287000 KZT)
+  CHECKPOINT CP3: 13 successful tx, 287000 KZT, ledger=['T001', 'T002', 'T003', 'T004', 'T005', 'T007', 'T008', 'T009', 'T010', 'T011', 'T013', 'T014', 'T015'] -> logs/checkpoints/CP3.json
+  === mode=checkpoint end: {"transactions_attempted": 15, "successful_transactions": 13, "failed_transactions": 2, "not_attempted": 0, "transactions_lost": 2, "processed_amount_kzt": 287000, "lost_amount_kzt": 150000, "retries": 11, "rollbacks": 2, "gateway_debit_calls": 23, "gateway_unique_debits": 15, "gateway_reversals": 2, "unreconciled_pending_kzt": 0, "ledger_total_kzt": 287000, "completion_rate": 0.8667} ===
+
+### comparison
+metric                          baseline  exceptions       retry  checkpoint
+successful_transactions                1           8          13          13
+failed_transactions                    1           7           2           2
+not_attempted                         13           0           0           0
+lost_amount_kzt                   425000      341000      150000      150000
+retries                                0           0          11          11
+rollbacks                              0           0           0           2
+unreconciled_pending_kzt               0      245000      150000           0
+completion_rate                   0.0667      0.5333      0.8667      0.8667

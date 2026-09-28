@@ -1,0 +1,4 @@
+12:19:13.019 | INFO    | === mode=baseline start: 15 transactions, total 437000 KZT ===
+12:19:13.019 | INFO    | T001 SUCCESS amount=12000
+12:19:13.020 | CRITICAL | T002 FAILED [Network] NetworkError: T002: connection refused by payment gateway -> program stopped, remaining transactions never attempted
+12:19:13.020 | INFO    | === mode=baseline end: {"transactions_attempted": 2, "successful_transactions": 1, "failed_transactions": 1, "not_attempted": 13, "transactions_lost": 14, "processed_amount_kzt": 12000, "lost_amount_kzt": 425000, "retries": 0, "rollbacks": 0, "gateway_debit_calls": 1, "gateway_unique_debits": 1, "gateway_reversals": 0, "unreconciled_pending_kzt": 0, "ledger_total_kzt": 12000, "completion_rate": 0.0667} ===

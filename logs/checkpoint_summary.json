@@ -1,0 +1,163 @@
+{
+  "mode": "checkpoint",
+  "metrics": {
+    "transactions_attempted": 15,
+    "successful_transactions": 13,
+    "failed_transactions": 2,
+    "not_attempted": 0,
+    "transactions_lost": 2,
+    "processed_amount_kzt": 287000,
+    "lost_amount_kzt": 150000,
+    "retries": 11,
+    "rollbacks": 2,
+    "gateway_debit_calls": 23,
+    "gateway_unique_debits": 15,
+    "gateway_reversals": 2,
+    "unreconciled_pending_kzt": 0,
+    "ledger_total_kzt": 287000,
+    "completion_rate": 0.8667
+  },
+  "status": {
+    "T001": "SUCCESS",
+    "T002": "SUCCESS",
+    "T003": "SUCCESS",
+    "T004": "SUCCESS",
+    "T005": "SUCCESS",
+    "T006": "ROLLED_BACK",
+    "T007": "SUCCESS",
+    "T008": "SUCCESS",
+    "T009": "SUCCESS",
+    "T010": "SUCCESS",
+    "T011": "SUCCESS",
+    "T012": "ROLLED_BACK",
+    "T013": "SUCCESS",
+    "T014": "SUCCESS",
+    "T015": "SUCCESS"
+  },
+  "exceptions": {
+    "T002": "NetworkError",
+    "T004": "GatewayTimeoutError",
+    "T006": "DatabaseError",
+    "T008": "NetworkError",
+    "T010": "GatewayTimeoutError",
+    "T012": "DatabaseError",
+    "T015": "NetworkError"
+  },
+  "recovery": {
+    "T001": "none needed",
+    "T002": "retry 1 succeeded",
+    "T003": "none needed",
+    "T004": "retry 2 succeeded (gateway replayed receipt, no double charge)",
+    "T005": "none needed",
+    "T006": "3 attempts failed -> rollback to CP1, debit reversed, continue",
+    "T007": "none needed",
+    "T008": "retry 1 succeeded",
+    "T009": "none needed",
+    "T010": "retry 2 succeeded (gateway replayed receipt, no double charge)",
+    "T011": "none needed",
+    "T012": "3 attempts failed -> rollback to CP2, debit reversed, continue",
+    "T013": "none needed",
+    "T014": "none needed",
+    "T015": "retry 1 succeeded"
+  },
+  "checkpoints": [
+    {
+      "label": "CP1",
+      "position": 5,
+      "reason": "every 5 successes",
+      "successful_transactions": 5,
+      "total_amount": 103000,
+      "ledger": {
+        "T001": 12000,
+        "T002": 25000,
+        "T003": 8000,
+        "T004": 45000,
+        "T005": 13000
+      },
+      "pending": {},
+      "gateway_receipts": [
+        "T001",
+        "T002",
+        "T003",
+        "T004",
+        "T005"
+      ],
+      "saved_at": "2026-09-28T12:19:13.990+05:00",
+      "file": "logs/checkpoints/CP1.json"
+    },
+    {
+      "label": "CP2",
+      "position": 11,
+      "reason": "every 5 successes",
+      "successful_transactions": 10,
+      "total_amount": 214000,
+      "ledger": {
+        "T001": 12000,
+        "T002": 25000,
+        "T003": 8000,
+        "T004": 45000,
+        "T005": 13000,
+        "T007": 9000,
+        "T008": 31000,
+        "T009": 15000,
+        "T010": 50000,
+        "T011": 6000
+      },
+      "pending": {},
+      "gateway_receipts": [
+        "T001",
+        "T002",
+        "T003",
+        "T004",
+        "T005",
+        "T007",
+        "T008",
+        "T009",
+        "T010",
+        "T011"
+      ],
+      "saved_at": "2026-09-28T12:19:14.347+05:00",
+      "file": "logs/checkpoints/CP2.json"
+    },
+    {
+      "label": "CP3",
+      "position": 15,
+      "reason": "end of batch (flush)",
+      "successful_transactions": 13,
+      "total_amount": 287000,
+      "ledger": {
+        "T001": 12000,
+        "T002": 25000,
+        "T003": 8000,
+        "T004": 45000,
+        "T005": 13000,
+        "T007": 9000,
+        "T008": 31000,
+        "T009": 15000,
+        "T010": 50000,
+        "T011": 6000,
+        "T013": 11000,
+        "T014": 22000,
+        "T015": 40000
+      },
+      "pending": {},
+      "gateway_receipts": [
+        "T001",
+        "T002",
+        "T003",
+        "T004",
+        "T005",
+        "T007",
+        "T008",
+        "T009",
+        "T010",
+        "T011",
+        "T013",
+        "T014",
+        "T015"
+      ],
+      "saved_at": "2026-09-28T12:19:14.551+05:00",
+      "file": "logs/checkpoints/CP3.json"
+    }
+  ]
+}

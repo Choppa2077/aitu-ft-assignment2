@@ -1,0 +1,23 @@
+{
+  "label": "CP1",
+  "position": 5,
+  "reason": "every 5 successes",
+  "successful_transactions": 5,
+  "total_amount": 103000,
+  "ledger": {
+    "T001": 12000,
+    "T002": 25000,
+    "T003": 8000,
+    "T004": 45000,
+    "T005": 13000
+  },
+  "pending": {},
+  "gateway_receipts": [
+    "T001",
+    "T002",
+    "T003",
+    "T004",
+    "T005"
+  ],
+  "saved_at": "2026-09-28T12:19:13.990+05:00"
+}

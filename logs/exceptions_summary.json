@@ -1,0 +1,56 @@
+{
+  "mode": "exceptions",
+  "metrics": {
+    "transactions_attempted": 15,
+    "successful_transactions": 8,
+    "failed_transactions": 7,
+    "not_attempted": 0,
+    "transactions_lost": 7,
+    "processed_amount_kzt": 96000,
+    "lost_amount_kzt": 341000,
+    "retries": 0,
+    "rollbacks": 0,
+    "gateway_debit_calls": 12,
+    "gateway_unique_debits": 12,
+    "gateway_reversals": 0,
+    "unreconciled_pending_kzt": 245000,
+    "ledger_total_kzt": 96000,
+    "completion_rate": 0.5333
+  },
+  "status": {
+    "T001": "SUCCESS",
+    "T002": "FAILED",
+    "T003": "SUCCESS",
+    "T004": "FAILED",
+    "T005": "SUCCESS",
+    "T006": "FAILED",
+    "T007": "SUCCESS",
+    "T008": "FAILED",
+    "T009": "SUCCESS",
+    "T010": "FAILED",
+    "T011": "SUCCESS",
+    "T012": "FAILED",
+    "T013": "SUCCESS",
+    "T014": "SUCCESS",
+    "T015": "FAILED"
+  },
+  "exceptions": {
+    "T002": "NetworkError",
+    "T004": "GatewayTimeoutError",
+    "T006": "DatabaseError",
+    "T008": "NetworkError",
+    "T010": "GatewayTimeoutError",
+    "T012": "DatabaseError",
+    "T015": "NetworkError"
+  },
+  "recovery": {
+    "T002": "caught, classified, logged, skipped; continue with next",
+    "T004": "caught, classified, logged, skipped; continue with next",
+    "T006": "caught, classified, logged, skipped; continue with next",
+    "T008": "caught, classified, logged, skipped; continue with next",
+    "T010": "caught, classified, logged, skipped; continue with next",
+    "T012": "caught, classified, logged, skipped; continue with next",
+    "T015": "caught, classified, logged, skipped; continue with next"
+  },
+  "checkpoints": []
+}
